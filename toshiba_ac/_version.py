@@ -612,7 +612,7 @@ def render(pieces: Dict, style: str) -> Any:
     }
 
 
-def get_versions() -> Dict|Any:
+def get_versions() -> Any:
     """Get version information or return default if unable to do so."""
     # I am in _version.py, which lives at ROOT/VERSIONFILE_SOURCE. If we have
     # __file__, we can work backwards from there to the root. Some
