@@ -32,12 +32,14 @@ def get_keywords() -> Dict:
 
 class VersioneerConfig:
     """Container for Versioneer configuration parameters."""
+
     VCS: str
     style: str
     tag_prefix: str
     parentdir_prefix: str
     versionfile_source: str
     verbose: bool
+
 
 def get_config() -> VersioneerConfig:
     """Create, populate and return the VersioneerConfig() object."""
@@ -52,11 +54,14 @@ def get_config() -> VersioneerConfig:
     cfg.verbose = False
     return cfg
 
+
 class NotThisMethod(Exception):
     """Exception raised if a method is not valid for the current scenario."""
 
+
 LONG_VERSION_PY: Dict[str, str] = {}
 HANDLERS: Dict[str, Dict[str, Callable]] = {}
+
 
 def register_vcs_handler(vcs: str, method: str) -> Callable:  # decorator
     """Create decorator to mark a method as the handler of a VCS."""
@@ -70,7 +75,10 @@ def register_vcs_handler(vcs: str, method: str) -> Callable:  # decorator
 
     return decorate
 
-def run_command(commands: Any, args: Any, cwd: Any = None, verbose: bool = False, hide_stderr: bool = False, env : Any = None) -> Any:
+
+def run_command(
+    commands: Any, args: Any, cwd: Any = None, verbose: bool = False, hide_stderr: bool = False, env: Any = None
+) -> Any:
     """Call the given command(s)."""
     assert isinstance(commands, list)
     process = None
@@ -88,7 +96,7 @@ def run_command(commands: Any, args: Any, cwd: Any = None, verbose: bool = False
             break
         except OSError:
             e = sys.exc_info()[1]
-            if e.errno == errno.ENOENT: # type: ignore 
+            if e.errno == errno.ENOENT:  # type: ignore
                 continue
             if verbose:
                 print("unable to run %s" % dispcmd)
