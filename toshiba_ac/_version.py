@@ -77,7 +77,7 @@ def register_vcs_handler(vcs: str, method: str) -> Callable:  # decorator
 
 
 def run_command(
-    commands: Any, args: Any, cwd: Any = None, verbose: bool = False, hide_stderr: bool = False, env : Any = None
+    commands: Any, args: Any, cwd: Any = None, verbose: bool = False, hide_stderr: bool = False, env: Any = None
 ) -> Any:
     """Call the given command(s)."""
     assert isinstance(commands, list)
